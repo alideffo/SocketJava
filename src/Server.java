@@ -10,6 +10,11 @@ public class Server {
     private Socket socket;
     private String path = "/Users/alideffo/Desktop/FRA UAS/";
 
+    /**
+     * The main function of our program. Where all the command/functions are called
+     * @param args The String argument
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
 
         Server server = new Server();
@@ -68,7 +73,10 @@ public class Server {
     }
 
 
-
+    /**
+     * To close the server socket properly.
+     * @throws IOException
+     */
     public void closeConnection() throws IOException {
         //bufferedReader.close();
         //printWriter.close();
@@ -80,7 +88,11 @@ public class Server {
     }
 
 
-
+    /**
+     * To list the directory in the given path (Default path: /Users/alideffo/Desktop/FRA UAS/) (or subpath)
+     * @param message The message the server received from the client
+     * @return A Stringbuilder, which stores all the name of dir. and files from the given path.
+     */
     public StringBuilder directoryListing(String message){
         StringBuilder directories = new StringBuilder();
         String[] splitMessage = message.split(";");
@@ -101,6 +113,11 @@ public class Server {
         return directories;
     }
 
+
+    /**
+     * To add a directory (in a given path. Default Path: /Users/alideffo/Desktop/FRA UAS/)
+     * @param message The message the server received from the client
+     */
     public void addDirectory(String message) {
         String[] splitMessage = message.split(";");
 
@@ -116,6 +133,10 @@ public class Server {
         }
     }
 
+    /**
+     * Delete a directory (from a given path. Default Path: /Users/alideffo/Desktop/FRA UAS/)
+     * @param message The message the server received from the client
+     */
     public void deleteDirectory(String message) {
         String[] splitMessage = message.split(";");
 
@@ -134,6 +155,11 @@ public class Server {
         }
     }
 
+    /**
+     * Add a file in the given Path or Subpath. Default Path: /Users/alideffo/Desktop/FRA UAS/
+     * @param message The message the server received from the client
+     * @throws IOException
+     */
     public void addFile(String message) throws IOException {
         String[] splitMessage = message.split(";");
 
@@ -159,7 +185,10 @@ public class Server {
     }
 
 
-
+    /**
+     * Delete file in the given Path or Subpath. Default Path: /Users/alideffo/Desktop/FRA UAS/
+     * @param message The message the server received from the client
+     */
     public void deleteFile(String message) {
         String[] splitMessage = message.split(";");
 
@@ -176,10 +205,14 @@ public class Server {
     }
 
 
-
+    /**
+     * Show the Text in a given file from a given path. Default Path: /Users/alideffo/Desktop/FRA UAS/
+     * @param message The message the server received from the client
+     * @return A Stringbuilder in which all the Text from the chosen file is stored.
+     * @throws Exception
+     */
     private StringBuilder getFile(String message) throws Exception {
         StringBuilder stringBuilder = new StringBuilder();
-
 
         String[] splitMessage = message.split(";");
 

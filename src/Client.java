@@ -42,7 +42,5 @@ public class Client {
             }while(!message.equals("=== Command ended ==="));
         }
 
-
-
     }
 }
